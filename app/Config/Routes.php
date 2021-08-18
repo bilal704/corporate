@@ -51,3 +51,10 @@ if (file_exists(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php'))
 {
 	require APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php';
 }
+
+
+/**
+ * 
+ * Custom API route for  adding a new department
+ */
+$routes->add('addDepartment', 'Department::addDepartment');
