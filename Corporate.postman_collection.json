@@ -1,0 +1,282 @@
+{
+	"info": {
+		"_postman_id": "21cf566f-81e5-4882-a332-4dfb51ff0536",
+		"name": "Corporate",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost/corporate/addEmployee",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "employee-name",
+							"value": "Bilal Ahmed",
+							"type": "text"
+						},
+						{
+							"key": "department-id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "mobile-no[]",
+							"value": "9999999999",
+							"type": "text"
+						},
+						{
+							"key": "mobile-no[]",
+							"value": "7777777777",
+							"type": "text"
+						},
+						{
+							"key": "address[]",
+							"value": "abc, pqr, kalina, santacurz(E), mumbai -98",
+							"type": "text"
+						},
+						{
+							"key": "address[]",
+							"value": "abc, pqr, kalina, santacurz(E), mumbai -71",
+							"type": "text"
+						},
+						{
+							"key": "address[]",
+							"value": "abc, pqr, kalina, santacurz(E), mumbai -29",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/corporate/addEmployee",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"corporate",
+						"addEmployee"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost/corporate/addDepartment",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "department-name",
+							"value": "Operations",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/corporate/addDepartment",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"corporate",
+						"addDepartment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost/corporate/viewAllEmployees",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/corporate/viewAllEmployees",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"corporate",
+						"viewAllEmployees"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost/corporate/deleteEmployee",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "employee-id",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/corporate/searchEmployee",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"corporate",
+						"searchEmployee"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost/corporate/searchEmployee",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "mobile-no",
+							"value": "9999999999",
+							"type": "text"
+						},
+						{
+							"key": "employee-id",
+							"value": "2",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/corporate/searchEmployee?token=",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"corporate",
+						"searchEmployee"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost/corporate/updateEmployee",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "employee-id",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "employee-name",
+							"value": "Ahmed Bilal",
+							"type": "text"
+						},
+						{
+							"key": "department-id",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "mobile-no[]",
+							"value": "8888888888",
+							"type": "text"
+						},
+						{
+							"key": "address[]",
+							"value": "abc, pqr, kurla, santacurz(E), mumbai -70",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/corporate/updateEmployee",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"corporate",
+						"updateEmployee"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost/corporate/generateToken",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "http://localhost/corporate/generateToken",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"corporate",
+						"generateToken"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

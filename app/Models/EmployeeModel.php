@@ -189,5 +189,10 @@ class EmployeeModel extends Model
             $emp_contact_builder->update($update_employee_contact, $search_by);
         }
     }
+
+    private function getSecretKey(){
+
+        return '28698061-0b46-1d96-c0de-336cdbdb0fa5';
+    }
 }
 ?>

@@ -88,3 +88,9 @@ $routes->add('searchEmployee', 'Employee::searchEmployee');
  * Custom API route for updating an employee
  */
 $routes->add('updateEmployee', 'Employee::updateEmployee');
+
+/**
+ * 
+ * Custom route for generating token for api authentication
+ */
+$routes->add('generateToken', 'Employee::generateToken');

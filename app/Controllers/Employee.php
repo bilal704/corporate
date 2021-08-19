@@ -1,16 +1,43 @@
 <?php
 
 namespace App\Controllers;
-use App\models\EmployeeModel; 
+use App\models\EmployeeModel;
+use Exception;
+use \Firebase\JWT\JWT;
 
 class Employee extends BaseController
 {
 	/**
+     * 
+     * Method to authenticate user request via API
+     */
+    private function verifyAuthToken(string $token){
+        
+        $key = $this->getSecretKey();
+        
+        try {
+
+            $decoded = JWT::decode($token, $key, array("HS256"));
+            
+            if ($decoded) {
+
+                return;
+            }
+        } catch (Exception $ex) {
+          
+            echo json_encode(['status' => false, 'msg' => 'Token authentication failed']);
+            exit;
+        }
+    }
+    
+    /**
 	 * 
 	 * Method to add new employee
 	 */
 	public function addEmployee(){
 		
+        $this->verifyAuthToken($this->request->getPost('token'));
+
         $employee_name = $this->request->getPost('employee-name');
         $department_id = $this->request->getPost('department-id');
         $mobile_no = $this->request->getPost('mobile-no');
@@ -50,6 +77,7 @@ class Employee extends BaseController
      */
     public function viewAllEmployees(){
 
+        $this->verifyAuthToken($this->request->getPost('token'));
         $this->employeeModel = new EmployeeModel();
 
         $employees_arr = $this->employeeModel->viewAllEmployees();
@@ -70,6 +98,7 @@ class Employee extends BaseController
      */
     public function deleteEmployee(){
 
+        $this->verifyAuthToken($this->request->getPost('token'));
         $emp_id = $this->request->getPost('employee-id');
         $emp_id = htmlentities(stripslashes(trim($emp_id)));
 
@@ -99,6 +128,7 @@ class Employee extends BaseController
 
     public function searchEmployee(){
 
+        $this->verifyAuthToken($this->request->getPost('token'));
         $search_by_columns = [];
 
         if(isset($_POST['employee-id']) && trim($_POST['employee-id']) != ''){
@@ -147,6 +177,7 @@ class Employee extends BaseController
      */
     public function updateEmployee(){
         
+        verifyAuthToken($this->request->getPost('token'));
         $search_by = $update_fields = [];
         if(isset($_POST['employee-id']) && trim($_POST['employee-id']) != ''){
 
@@ -256,5 +287,34 @@ class Employee extends BaseController
         }
 
         return json_encode($response);
+    }
+
+    /**
+     * 
+     * Generate token for API Authentication
+     */
+    public function generateToken(){
+
+        $key = $this->getSecretKey();
+        
+        $iat = time(); // current timestamp value
+        $nbf = $iat + 10;
+        $exp = $iat + 3600;
+
+        $payload = array(
+            "iss" => "The_claim",
+            "aud" => "The_Aud",
+            "iat" => $iat, // issued at
+            "nbf" => $nbf, //not before in seconds
+            "exp" => $exp, // expire time in seconds
+            "data" => ''
+        );
+
+        return $token = JWT::encode($payload, $key);
+    }
+
+    private function getSecretKey(){
+
+        return '28698061-0b46-1d96-c0de-336cdbdb0fa5';
     }
 }
