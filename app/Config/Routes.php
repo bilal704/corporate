@@ -55,6 +55,36 @@ if (file_exists(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php'))
 
 /**
  * 
- * Custom API route for  adding a new department
+ * Custom API route for adding a new department
  */
 $routes->add('addDepartment', 'Department::addDepartment');
+
+/**
+ * 
+ * Custom API route for adding a new employee
+ */
+$routes->add('addEmployee', 'Employee::addEmployee');
+
+/**
+ * 
+ * Custom API route for getting all the employees
+ */
+$routes->add('viewAllEmployees', 'Employee::viewAllEmployees');
+
+/**
+ * 
+ * Custom API route for deleting an employee by ID
+ */
+$routes->add('deleteEmployee', 'Employee::deleteEmployee');
+
+/**
+ * 
+ * Custom API route for searching an employee
+ */
+$routes->add('searchEmployee', 'Employee::searchEmployee');
+
+/**
+ * 
+ * Custom API route for updating an employee
+ */
+$routes->add('updateEmployee', 'Employee::updateEmployee');
